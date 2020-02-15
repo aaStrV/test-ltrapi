@@ -12,7 +12,8 @@
 
 class IRecord {
 public:
-	virtual void record(DWORD *buf, DWORD *buf_tmark, DWORD len) = 0;
+	virtual void record(const DWORD *buf, const DWORD *buf_tmark,
+			DWORD len) = 0;
 	virtual ~IRecord(void) {
 	}
 };

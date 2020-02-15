@@ -8,7 +8,8 @@
 #include "StdoutChannelRecorder.h"
 using namespace std;
 
-void StdoutChannelRecorder::record(DWORD *buf, DWORD *buf_tmark, DWORD len) {
+void StdoutChannelRecorder::record(const DWORD *buf, const DWORD *buf_tmark,
+		DWORD len) {
 	cout << "----New data block receaved by StdoutChannelRecorder" << id << ":"
 			<< endl;
 	for (int i = 0; i < len; i++) {

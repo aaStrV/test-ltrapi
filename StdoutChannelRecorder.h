@@ -17,7 +17,7 @@ public:
 	StdoutChannelRecorder(unsigned int _channel = 0, int _id = 0) :
 			channel(_channel & 0xFF), id(_id) {
 	}
-	void record(DWORD *buf, DWORD *buf_tmark, DWORD len);
+	void record(const DWORD *buf, const DWORD *buf_tmark, DWORD len);
 	~StdoutChannelRecorder(void) {
 	}
 };

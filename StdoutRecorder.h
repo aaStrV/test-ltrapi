@@ -16,7 +16,7 @@ public:
 	StdoutRecorder(int _id = 0) :
 			id(_id) {
 	}
-	void record(DWORD *buf, DWORD *buf_tmark, DWORD len);
+	void record(const DWORD *buf, const DWORD *buf_tmark, DWORD len);
 	~StdoutRecorder(void) {
 	}
 };
