@@ -13,6 +13,10 @@ int CrateReader::readModule(DWORD module, DWORD len) {
 	int err = 0;
 	int receaved = 0;
 
+	if (!crate->isReady()) {
+		cerr << "CrateReader::readModule(), crate is not ready" << endl;
+		return -1;
+	}
 	err = receaved = crate->getData(module, buf, buf_tmark, len, timeout);
 	if (err < 0) {
 		cerr << "CrateReader::readModule(), crate->getData: error " << err
