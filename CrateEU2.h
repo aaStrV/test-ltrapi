@@ -50,8 +50,13 @@ private:
 	int _resetModule(WORD);
 
 public:
-	CrateEU2(const char *crate_sn = NULL, const char *ltrd_addr_str =
-			"127.0.0.1", WORD ltrd_port = LTRD_PORT_DEFAULT);
+	/*CrateEU2(const char *crate_sn = NULL, const char *ltrd_addr_str =
+	 "127.0.0.1", WORD ltrd_port = LTRD_PORT_DEFAULT);*/
+	CrateEU2(const char *crate_sn, const char *ltrd_addr_str, WORD ltrd_port);
+	CrateEU2() :
+			CrateEU2(NULL, "127.0.0.1", LTRD_PORT_DEFAULT) {
+	}
+	;
 	int init(void);
 	int resetModule(WORD);
 	int resetModules(void);
@@ -62,6 +67,7 @@ public:
 	int isReady(void) {
 		return f_ready;
 	}
+	int startSyncMarks(unsigned int startmark_mode, unsigned int secmark_mode);
 };
 
 #endif /* CRATEEU2_H_ */

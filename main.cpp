@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char **argv) {
 	cout << "Program started" << endl;
 
-	CrateEU2 crate("1234567812345678", "127.0.0.1", LTRD_PORT_DEFAULT);
+	CrateEU2 crate("1234567887654321", "127.0.0.1", LTRD_PORT_DEFAULT);
 	StdoutRecorder rec(0);
 	StdoutChannelRecorder rec1(1, 100);
 	StdoutChannelRecorder rec2(2, 231);
@@ -24,6 +24,7 @@ int main(int argc, char **argv) {
 	crate.init();
 	crate.resetModules();
 	sleep(5);
+	crate.startSyncMarks(LTR_MARK_EXT_DIGIN1_RISE, LTR_MARK_EXT_DIGIN2_RISE);
 
 	creader.readTestModule(0, 50);
 	sleep(1);

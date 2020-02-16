@@ -69,6 +69,21 @@ int CrateEU2::init() {
 		}
 	}
 
+	// Отключаем синхронизацию. Ее нужно включить перед
+	// началом измерений
+	err = LTR_MakeStartMark(&tltr, LTR_MARK_OFF);
+	if (err < 0) {
+		cerr << "CrateEU2::init(), LTR_MakeStartMark: error " << err << endl;
+		f_ready = 0;
+		return err;
+	}
+	err = LTR_StopSecondMark(&tltr);
+	if (err < 0) {
+		cerr << "CrateEU2::init(), LTR_StopSecondMark: error " << err << endl;
+		f_ready = 0;
+		return err;
+	}
+
 	// Соединение больше не нужно, обязательно закрыть
 	err = LTR_Close(&tltr);
 	if (err < 0) {
@@ -88,11 +103,70 @@ int CrateEU2::init() {
 	return 0;
 }
 
+/**
+ * Запуск синхронизации. Режимы описаны в ltrapi
+ */
+int CrateEU2::startSyncMarks(unsigned int startmark_mode,
+		unsigned int secmark_mode) {
+	// Если флаг не установлен - инициализация незавершена,
+	// соединяться нельзя, выходим
+	if (!f_ready)
+		return LTR_ERROR_UNKNOWN;
+
+	// Если синхранизация не смогла запуститься, логично
+	// считать систему не готовой к измерениям
+	f_ready = 0;
+
+	// Создаем описатель соединения на основе крейтового. Нужно
+	// заполнить поля saddr, sport, csn, cc
+	TLTR tltr_crate;
+	int err = 0;
+	err = LTR_Init(&tltr_crate);
+	if (err < 0) {
+		cerr << "CrateEU2::startSyncMarks(), LTR_Init: error " << err << endl;
+		return err;
+	}
+
+	// Открываем соединение. Оно должно быть обязательно закрыто
+	err = LTR_OpenCrate(&tltr_crate, ltrd_addr_dword, ltrd_port,
+			LTR_CRATE_IFACE_UNKNOWN, csn);
+	if (err < 0) {
+		cerr << "CrateEU2::startSyncMarks(), LTR_OpenCrate: error " << err
+				<< endl;
+		return err;
+	}
+
+	// Включаем синхронизацию
+	err = LTR_MakeStartMark(&tltr_crate, startmark_mode);
+	if (err < 0) {
+		cerr << "CrateEU2::startSyncMarks(), LTR_MakeStartMark: error " << err
+				<< endl;
+		return err;
+	}
+	err = LTR_StartSecondMark(&tltr_crate, secmark_mode);
+	if (err < 0) {
+		cerr << "CrateEU2::startSyncMarks(), LTR_StartSecondMark: error " << err
+				<< endl;
+		f_ready = 0;
+		return err;
+	}
+
+	// Соединение больше не нужно, обязательно закрыть
+	err = LTR_Close(&tltr_crate);
+	if (err < 0) {
+		cerr << "CrateEU2::startSyncMarks(), LTR_Close: error " << err << endl;
+		return err;
+	}
+
+	cout << "CrateEU2::startSyncMarks(), finished" << endl;
+	f_ready = 1;
+	return 0;
+}
+
 int CrateEU2::getData(WORD module, DWORD *buf, DWORD *buf_tmark, DWORD len,
 		DWORD timeout) {
 	int err = 0;
 	int receaved = 0;
-	TLTR tltr_module;
 
 	// Если флаг не установлен - инициализация незавершена,
 	// соединяться нельзя, выходим
@@ -106,6 +180,7 @@ int CrateEU2::getData(WORD module, DWORD *buf, DWORD *buf_tmark, DWORD len,
 
 	// Создаем описатель соединения на основе крейтового. Нужно
 	// заполнить поля saddr, sport, csn, cc
+	TLTR tltr_module;
 	err = LTR_Init(&tltr_module);
 	if (err < 0) {
 		cerr << "CrateEU2::getData(), LTR_Init: error " << err << endl;
