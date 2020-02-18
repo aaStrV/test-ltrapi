@@ -11,6 +11,6 @@
 #include "ltr/include/ltrapi.h"
 using namespace std;
 
-int getargs(int argc, char **argv, const char **ip, DWORD *port);
+int getargs(int argc, char **argv, const char *&ip, DWORD &port);
 
 #endif /* FUNCTIONS_H_ */

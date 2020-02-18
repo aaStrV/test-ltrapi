@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 	// Формат ввода: <progname> [ip [port]]
 	const char *ip = IP_LTRD;
 	DWORD port = PORT_LTRD;
-	if (!(getargs(argc, argv, &ip, &port) == 0))
+	if (!(getargs(argc, argv, ip, port) == 0))
 		return -1;
 
 	CrateEU2 crate("1234567887654321", ip, port);
@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
 
 	crate.init();
 	crate.resetModules();
-//	sleep(1);
+	sleep(1);
 	crate.startSyncMarks(LTR_MARK_EXT_DIGIN1_RISE, LTR_MARK_EXT_DIGIN2_RISE);
 
 //	creader.readTestModule(0, 50);
