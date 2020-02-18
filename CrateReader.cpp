@@ -8,10 +8,11 @@
 #include "CrateReader.h"
 using namespace std;
 
-int CrateReader::readModule(DWORD module, DWORD len) {
+int CrateReader::readModule(DWORD module, DWORD _len) {
 	set<IRecord*>::iterator rec_it;
 	int err = 0;
 	int receaved = 0;
+	DWORD len = _len <= MAX_BUF ? _len : MAX_BUF;
 
 	if (!crate->isReady()) {
 		cerr << "CrateReader::readModule(), crate is not ready" << endl;
@@ -29,11 +30,12 @@ int CrateReader::readModule(DWORD module, DWORD len) {
 	return 0;
 }
 
-int CrateReader::readTestModule(DWORD module, DWORD len) {
+int CrateReader::readTestModule(DWORD module, DWORD _len) {
 //	cout << "CrateReader::readTestModule(), started, reading "<< len << " samples" << endl;
 	set<IRecord*>::iterator rec_it;
 	int err = 0;
 	int receaved = 0;
+	DWORD len = _len <= MAX_BUF ? _len : MAX_BUF;
 
 	err = receaved = crate->getTestData(module, buf, buf_tmark, len, timeout);
 	if (err < 0) {

@@ -4,6 +4,7 @@
 #include "StdoutRecorder.h"
 #include "StdoutChannelRecorder.h"
 #include "CrateReader.h"
+#include "defines.h"
 //#include <ctime>
 using namespace std;
 

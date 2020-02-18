@@ -12,7 +12,8 @@
 #include <set>
 #include "IRecord.h"
 #include "CrateEU2.h"
-#define MAX_BUF 100000
+#include "defines.h"
+//#define MAX_BUF 100000 // TODO: в таком виде это баг
 using namespace std;
 
 /**
