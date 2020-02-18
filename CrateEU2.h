@@ -55,7 +55,6 @@ public:
 	CrateEU2() :
 			CrateEU2(NULL, "127.0.0.1", LTRD_PORT_DEFAULT) {
 	}
-	;
 	int init(void);
 	int resetModule(WORD);
 	int resetModules(void);
