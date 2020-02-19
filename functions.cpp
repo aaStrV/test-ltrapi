@@ -2,7 +2,8 @@
 
 int getargs(int argc, char **argv, const char *&ip, WORD &port) {
 	if (argc == 1) {
-	} else if (argc > 1) {
+	}
+	if (argc > 1) {
 		ip = argv[1];
 		int a[4];
 		if (sscanf(argv[1], "%d.%d.%d.%d", &a[0], &a[1], &a[2], &a[3]) != 4) {
@@ -16,7 +17,8 @@ int getargs(int argc, char **argv, const char *&ip, WORD &port) {
 				return -1;
 			}
 		}
-	} else if (argc == 3) {
+	}
+	if (argc > 2) {
 		int tmpport = atoi(argv[2]);
 		if (tmpport > 0xFFFF || tmpport < 0) {
 			cout << "Check port" << endl;
@@ -24,7 +26,8 @@ int getargs(int argc, char **argv, const char *&ip, WORD &port) {
 		} else {
 			port = (WORD) tmpport;
 		}
-	} else {
+	}
+	if (argc > 3) {
 		cout << "Wrong arguments, use that:" << endl;
 		cout << "  <progname> [ip [port]]" << endl;
 		cout << "or, for 127.0.0.1:11111:" << endl;
@@ -34,7 +37,7 @@ int getargs(int argc, char **argv, const char *&ip, WORD &port) {
 	return 0;
 }
 
-int getIp(const char * s){
+int getIp(const char *s) {
 	int a[4];
 	int ip;
 	sscanf(s, "%d.%d.%d.%d", &a[0], &a[1], &a[2], &a[3]);
