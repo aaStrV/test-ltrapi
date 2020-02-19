@@ -1,10 +1,3 @@
-/*
- * StdoutRecorder.h
- *
- *  Created on: 14 февр. 2020 г.
- *      Author: sergius
- */
-
 #ifndef STDOUTRECORDER_H_
 #define STDOUTRECORDER_H_
 #include <iostream>

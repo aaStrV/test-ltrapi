@@ -1,14 +1,7 @@
-/*
- * IRecord.h
- *
- *  Created on: 14 февр. 2020 г.
- *      Author: sergius
- */
-
 #ifndef IRECORD_H_
 #define IRECORD_H_
-#include <cstdint>
-#include "ltr/include/ltrapi.h"
+//#include <cstdint>
+#include "ltr/include/ltr24api.h"
 
 class IRecord {
 public:

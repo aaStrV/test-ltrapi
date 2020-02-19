@@ -1,10 +1,3 @@
-/*
- * StdoutChannelRecorder.cpp
- *
- *  Created on: 14 февр. 2020 г.
- *      Author: sergius
- */
-
 #include "StdoutChannelRecorder.h"
 using namespace std;
 
@@ -15,7 +8,9 @@ void StdoutChannelRecorder::record(const DWORD *buf, const DWORD *buf_tmark,
 	for (int i = 0; i < len; i++) {
 		// допустим каналов 16, и они кодируются в 4-х
 		// младших битах. Тогда маска 0xF
-		DWORD _chan = buf[i] & 0xF;
+		// UPD: в LTR24 каналов 4, кодируются в 4, 5 битах,
+		// маска 0x30;
+		DWORD _chan = (buf[i] & 0x30) >> 4;
 		if (_chan != channel)
 			continue;
 		cout << "StdoutChannelRecorder" << id << ", channel = " << channel

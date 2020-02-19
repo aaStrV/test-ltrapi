@@ -1,12 +1,4 @@
-/*
- * DataDispetcher.cpp
- *
- *  Created on: 14 февр. 2020 г.
- *      Author: sergius
- */
-
 #include "CrateReader.h"
-using namespace std;
 
 int CrateReader::readModule(DWORD module, DWORD _len) {
 	set<IRecord*>::iterator rec_it;
@@ -14,15 +6,18 @@ int CrateReader::readModule(DWORD module, DWORD _len) {
 	int receaved = 0;
 	DWORD len = _len <= MAX_BUF ? _len : MAX_BUF;
 
-	if (!crate->isReady()) {
-		cerr << "CrateReader::readModule(), crate is not ready" << endl;
-		return -1;
-	}
+//	if (!crate->isReady()) {
+//		cerr << "CrateReader::readModule(), crate is not ready" << endl;
+//		return -1;
+//	}
 	err = receaved = crate->getData(module, buf, buf_tmark, len, timeout);
+//	err = receaved = crate->getData(module, buf, buf_tmark, len, timeout);
 	if (err < 0) {
 		cerr << "CrateReader::readModule(), crate->getData: error " << err
 				<< endl;
 		return err;
+	} else {
+		cout << "Read done " << endl;
 	}
 	for (rec_it = clients.begin(); rec_it != clients.end(); rec_it++) {
 		(*rec_it)->record(buf, buf_tmark, receaved);

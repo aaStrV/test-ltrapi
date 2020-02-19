@@ -1,10 +1,3 @@
-/*
- * StdoutChannelRecorder.h
- *
- *  Created on: 14 февр. 2020 г.
- *      Author: sergius
- */
-
 #ifndef STDOUTCHANNELRECORDER_H_
 #define STDOUTCHANNELRECORDER_H_
 #include <iostream>

@@ -1,19 +1,12 @@
-/*
- * DataDispetcher.h
- *
- *  Created on: 14 февр. 2020 г.
- *      Author: sergius
- */
-
 #ifndef CRATEREADER_H_
 #define CRATEREADER_H_
-#include "ltr/include/ltrapi.h"
+//#include "ltr/include/ltrapi.h"
+#include <ltr/include/ltr24api.h>
 #include <iostream>
 #include <set>
 #include "IRecord.h"
 #include "CrateEU2.h"
 #include "defines.h"
-//#define MAX_BUF 100000 // TODO: в таком виде это баг
 using namespace std;
 
 /**
@@ -29,7 +22,7 @@ private:
 	DWORD timeout;
 
 public:
-	CrateReader(CrateEU2 &crate, DWORD _timeout = 100) :
+	CrateReader(CrateEU2 &crate, DWORD _timeout = 2000) :
 			timeout(_timeout) {
 		this->crate = &crate;
 	}

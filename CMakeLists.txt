@@ -11,4 +11,4 @@ link_directories(${LTR_LIB_PATH})
 add_executable(test-ltrapi main.cpp IRecord.cpp CrateEU2.cpp 
                CrateReader.cpp StdoutRecorder.cpp 
                StdoutChannelRecorder.cpp functions.cpp)
-target_link_libraries(test-ltrapi ltrapi)
+target_link_libraries(test-ltrapi ltr24api)
