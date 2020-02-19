@@ -23,26 +23,25 @@
  * до рассылки, а также сохранение данных, если рассылка не нужна.
  */
 #include <iostream>
-//#include "ltr/include/ltrapi.h"
-#include <ltr/include/ltr24api.h>
-#include "CrateEU2.h"
+#include <ltr24api.h>
+#include "defines.h"
+#include "defines.h"
+#include "CrateEu2.h"
 #include "StdoutRecorder.h"
 #include "StdoutChannelRecorder.h"
 #include "CrateReader.h"
-#include "defines.h"
-#include "functions.h"
 using namespace std;
 
 int main(int argc, char **argv) {
 	// Обработка аргументов
 	// Формат ввода: <progname> [ip [port]]
 	const char *ip = IP_LTRD;
-	DWORD port = PORT_LTRD;
+	WORD port = PORT_LTRD;
 	if (!(getargs(argc, argv, ip, port) == 0))
 		return -1;
 
 	// создаем объект крейта
-	CrateEU2 crate("5T380577", ip, port);
+	CrateEu2 crate("5T380577", ip, port);
 
 	// создаем приемники-обработчики данных
 	StdoutRecorder rec(0); // выводит все в stdout в виде "метка:запись"
@@ -64,5 +63,6 @@ int main(int argc, char **argv) {
 
 	creader.readModule(1); // запрашиваем 1024 слова из модуля 1
 	creader.readModule(2, 20); // запрашиваем 20 слов из модуля 2
+
 	return 0;
 }

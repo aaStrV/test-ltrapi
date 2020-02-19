@@ -1,6 +1,6 @@
 #include "CrateReader.h"
 
-int CrateReader::readModule(DWORD module, DWORD _len) {
+int CrateReader::readModule(INT module, DWORD _len) {
 	set<IRecord*>::iterator rec_it;
 	int err = 0;
 	int receaved = 0;

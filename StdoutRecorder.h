@@ -1,5 +1,6 @@
 #ifndef STDOUTRECORDER_H_
 #define STDOUTRECORDER_H_
+
 #include <iostream>
 #include "IRecord.h"
 

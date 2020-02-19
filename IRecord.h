@@ -1,8 +1,6 @@
 #ifndef IRECORD_H_
 #define IRECORD_H_
-//#include <cstdint>
-#include "ltr/include/ltr24api.h"
-
+#include "ltr24api.h"
 class IRecord {
 public:
 	virtual void record(const DWORD *buf, const DWORD *buf_tmark,

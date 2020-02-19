@@ -1,5 +1,6 @@
 #ifndef STDOUTCHANNELRECORDER_H_
 #define STDOUTCHANNELRECORDER_H_
+
 #include <iostream>
 #include "IRecord.h"
 

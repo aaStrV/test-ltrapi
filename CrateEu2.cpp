@@ -1,19 +1,23 @@
-#include "CrateEU2.h"
+#include "CrateEu2.h"
 
-CrateEU2::CrateEU2(const char *_crate_sn, const char *_ltrd_addr_str,
+CrateEu2::~CrateEu2(void)
+{
+}
+
+CrateEu2::CrateEu2(const char *_crate_sn, const char *_ltrd_addr_str,
 		WORD _ltrd_port) :
 		p_csn(_crate_sn), ltrd_addr_str(_ltrd_addr_str), ltrd_port(_ltrd_port) {
 
-	ltrd_addr_dword = htonl(inet_addr(ltrd_addr_str));
+	ltrd_addr_dword = getIp(ltrd_addr_str);
 
 	// Выведем информацию по созданному крейту
 	if (p_csn)
-		cout << "CrateEU2::CrateEU2(): serial = " << p_csn << endl;
+		cout << "CrateEu2::CrateEu2(): serial = " << p_csn << endl;
 	else
-		cout << "CrateEU2::CrateEU2(): serial = NULL" << endl;
-	cout << "CrateEU2::CrateEU2(): ltrd_addr_str = " << ltrd_addr_str << endl;
-	cout << "CrateEU2::CrateEU2(): ltrd_port = " << ltrd_port << endl;
-	cout << "CrateEU2::CrateEU2(): ltrd_addr_dword = " << hex
+		cout << "CrateEu2::CrateEu2(): serial = NULL" << endl;
+	cout << "CrateEu2::CrateEu2(): ltrd_addr_str = " << ltrd_addr_str << endl;
+	cout << "CrateEu2::CrateEu2(): ltrd_port = " << ltrd_port << endl;
+	cout << "CrateEu2::CrateEu2(): ltrd_addr_dword = " << hex
 			<< this->ltrd_addr_dword << dec << endl;
 }
 
@@ -41,7 +45,7 @@ CrateEU2::CrateEU2(const char *_crate_sn, const char *_ltrd_addr_str,
  *
  *  7-8 могут повторяться в цикле. Зависит от логики пользователя.
  */
-int CrateEU2::getData(WORD module, DWORD *buf, DWORD *buf_tmark, DWORD len,
+int CrateEu2::getData(INT module, DWORD *buf, DWORD *buf_tmark, DWORD len,
 		DWORD timeout) {
 	cout << "CrateEU2::getData(): reading module " << module << ", crate "
 			<< p_csn << endl;
@@ -147,12 +151,12 @@ int CrateEU2::getData(WORD module, DWORD *buf, DWORD *buf_tmark, DWORD len,
 	}
 	return receaved;
 }
-int CrateEU2::getTestData(WORD module, DWORD *buf, DWORD *buf_tmark, DWORD len,
+int CrateEu2::getTestData(INT module, DWORD *buf, DWORD *buf_tmark, DWORD len,
 		DWORD timeout) {
 //	cout << "CrateEU2::getTestData(), started:" << endl;
 	buf[0] = 0;
 	buf_tmark[0] = 0;
-	for (int i = 1; i < len; i++) {
+	for (DWORD i = 1; i < len; i++) {
 		buf[i] = (DWORD) rand();
 		buf_tmark[i] = (DWORD) rand();
 	}

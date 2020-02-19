@@ -1,11 +1,11 @@
 #ifndef CRATEREADER_H_
 #define CRATEREADER_H_
-//#include "ltr/include/ltrapi.h"
-#include <ltr/include/ltr24api.h>
+
+#include <ltr24api.h>
 #include <iostream>
 #include <set>
 #include "IRecord.h"
-#include "CrateEU2.h"
+#include "CrateEu2.h"
 #include "defines.h"
 using namespace std;
 
@@ -18,11 +18,11 @@ private:
 	DWORD buf[MAX_BUF];
 	DWORD buf_tmark[MAX_BUF];
 	set<IRecord*> clients;
-	CrateEU2 *crate;
+	CrateEu2 *crate;
 	DWORD timeout;
 
 public:
-	CrateReader(CrateEU2 &crate, DWORD _timeout = 2000) :
+	CrateReader(CrateEu2 &crate, DWORD _timeout = 2000) :
 			timeout(_timeout) {
 		this->crate = &crate;
 	}
@@ -35,7 +35,7 @@ public:
 			clients.erase(it);
 		}
 	}
-	int readModule(DWORD module, DWORD len = 1024);
+	int readModule(INT module, DWORD len = 1024);
 	int readTestModule(DWORD module, DWORD len = 10);
 };
 

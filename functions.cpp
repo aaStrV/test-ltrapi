@@ -1,7 +1,6 @@
 #include "functions.h"
-#include <stdio.h>
 
-int getargs(int argc, char **argv, const char *&ip, DWORD &port) {
+int getargs(int argc, char **argv, const char *&ip, WORD &port) {
 	if (argc == 1) {
 	} else if (argc > 1) {
 		ip = argv[1];
@@ -23,7 +22,7 @@ int getargs(int argc, char **argv, const char *&ip, DWORD &port) {
 			cout << "Check port" << endl;
 			return -1;
 		} else {
-			port = (DWORD) tmpport;
+			port = (WORD) tmpport;
 		}
 	} else {
 		cout << "Wrong arguments, use that:" << endl;
@@ -33,4 +32,13 @@ int getargs(int argc, char **argv, const char *&ip, DWORD &port) {
 		return -2;
 	}
 	return 0;
+}
+
+int getIp(const char * s){
+	int a[4];
+	int ip;
+	sscanf(s, "%d.%d.%d.%d", &a[0], &a[1], &a[2], &a[3]);
+	ip = (a[0] << 24) | (a[1] << 16) | (a[2] << 8) | a[3];
+	cout << "IP: " << hex << ip << dec << endl;
+	return ip;
 }
