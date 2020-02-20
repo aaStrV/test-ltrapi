@@ -1,7 +1,6 @@
 #include "CrateEu2.h"
 
-CrateEu2::~CrateEu2(void)
-{
+CrateEu2::~CrateEu2(void) {
 }
 
 CrateEu2::CrateEu2(const char *_crate_sn, const char *_ltrd_addr_str,

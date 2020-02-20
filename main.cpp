@@ -33,6 +33,7 @@
 using namespace std;
 
 int main(int argc, char **argv) {
+	// @formatter:off
 	// Обработка аргументов
 	// Формат ввода: <progname> [ip [port]]
 	const char *ip = IP_LTRD;
@@ -65,4 +66,5 @@ int main(int argc, char **argv) {
 	creader.readModule(2, 20); // запрашиваем 20 слов из модуля 2
 
 	return 0;
+	// @formatter:on
 }

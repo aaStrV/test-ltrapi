@@ -7,6 +7,6 @@
 using namespace std;
 
 int getargs(int argc, char **argv, const char *&ip, WORD &port);
-int getIp(const char * s);
+int getIp(const char *s);
 
 #endif /* FUNCTIONS_H_ */
