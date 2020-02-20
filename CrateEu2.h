@@ -23,8 +23,7 @@ using namespace std;
  * буфер клиента(клиент может быть в другом потоке).
  */
 
-class CrateEu2
-{
+class CrateEu2 {
 private:
 	const char *ltrd_addr_str;
 	DWORD ltrd_addr_dword;
@@ -34,8 +33,10 @@ private:
 	WORD modules[LTR_MODULES_PER_CRATE_MAX];
 public:
 	CrateEu2(const char *crate_sn, const char *ltrd_addr_str, WORD ltrd_port);
-	CrateEu2(void) : p_csn(NULL), ltrd_addr_str("127.0.0.1"), ltrd_port(LTRD_PORT_DEFAULT) {
-	}
+	/*CrateEu2(void) :
+			p_csn(NULL), ltrd_addr_str("127.0.0.1"), ltrd_port(
+					LTRD_PORT_DEFAULT), ltrd_addr_dword(0x7f000001) {
+	}*/
 	int getData(INT module, DWORD *buf, DWORD *buf_tmark, DWORD len,
 			DWORD timeout); // таймаут в мс
 	int getTestData(INT module, DWORD *buf, DWORD *buf_tmark, DWORD len,
