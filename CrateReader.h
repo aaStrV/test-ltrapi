@@ -7,8 +7,8 @@
 #include "IRecord.h"
 #include "CrateEu2.h"
 #include "defines.h"
-using namespace std;
 
+namespace test_ltrapi {
 /**
  * Читает модули крейта, рассылает данные на регистраторы.
  * Возможен запуск чтения модуля из отдельного потока. В теории
@@ -17,7 +17,7 @@ class CrateReader {
 private:
 	DWORD buf[MAX_BUF];
 	DWORD buf_tmark[MAX_BUF];
-	set<IRecord*> clients;
+	std::set<IRecord*> clients;
 	CrateEu2 *crate;
 	DWORD timeout;
 
@@ -38,5 +38,6 @@ public:
 	int readModule(INT module, DWORD len = 1024);
 	int readTestModule(DWORD module, DWORD len = 10);
 };
+} // namespace test_ltrapi
 
 #endif /* CRATEREADER_H_ */

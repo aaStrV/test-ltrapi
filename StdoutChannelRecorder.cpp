@@ -1,6 +1,7 @@
 #include "StdoutChannelRecorder.h"
 using namespace std;
 
+namespace test_ltrapi {
 void StdoutChannelRecorder::record(const DWORD *buf, const DWORD *buf_tmark,
 		DWORD len) {
 	cout << "----New data block receaved by StdoutChannelRecorder" << id << ":"
@@ -18,3 +19,4 @@ void StdoutChannelRecorder::record(const DWORD *buf, const DWORD *buf_tmark,
 	}
 	cout << "----End of data block" << endl;
 }
+} // namespace test_ltrapi

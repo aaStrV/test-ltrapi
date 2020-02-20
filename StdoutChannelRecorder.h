@@ -4,6 +4,7 @@
 #include <iostream>
 #include "IRecord.h"
 
+namespace test_ltrapi {
 class StdoutChannelRecorder: public IRecord {
 	int id;
 	unsigned int channel;
@@ -15,5 +16,6 @@ public:
 	~StdoutChannelRecorder(void) {
 	}
 };
+} // namespace test_ltrapi
 
 #endif /* STDOUTCHANNELRECORDER_H_ */

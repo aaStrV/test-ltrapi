@@ -1,5 +1,7 @@
 #include "functions.h"
+using namespace std;
 
+namespace test_ltrapi {
 int getargs(int argc, char **argv, const char *&ip, WORD &port) {
 	if (argc == 1) {
 	}
@@ -44,3 +46,4 @@ int getIp(const char *s) {
 	ip = (a[0] << 24) | (a[1] << 16) | (a[2] << 8) | a[3];
 	return ip;
 }
+} // namespace test_ltrapi

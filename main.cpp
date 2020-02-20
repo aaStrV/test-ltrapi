@@ -30,7 +30,8 @@
 #include "StdoutRecorder.h"
 #include "StdoutChannelRecorder.h"
 #include "CrateReader.h"
-using namespace std;
+
+using namespace test_ltrapi;
 
 int main(int argc, char **argv) {
 	// @formatter:off

@@ -1,5 +1,7 @@
 #include "CrateReader.h"
+using namespace std;
 
+namespace test_ltrapi {
 int CrateReader::readModule(INT module, DWORD _len) {
 	DWORD len = _len <= MAX_BUF ? _len : MAX_BUF;
 	int err = 0;
@@ -42,3 +44,4 @@ int CrateReader::readTestModule(DWORD module, DWORD _len) {
 	 << hex << buf_tmark[0] << ":" << buf[0] << dec << endl;*/
 	return 0;
 }
+} // namespace test_ltrapi

@@ -5,8 +5,8 @@
 #include <string.h>
 #include <ltr24api.h>
 #include "functions.h"
-using namespace std;
 
+namespace test_ltrapi {
 /**
  * Класс описывает крейт типа LTR-EU-2
  *
@@ -43,5 +43,6 @@ public:
 			DWORD timeout); // таймаут в мс
 	~CrateEu2(void);
 };
+} // namespace test_ltrapi
 
 #endif /* CRATEEU2_H_ */

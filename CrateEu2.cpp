@@ -1,5 +1,7 @@
 #include "CrateEu2.h"
+using namespace std;
 
+namespace test_ltrapi {
 CrateEu2::~CrateEu2(void) {
 }
 
@@ -163,3 +165,4 @@ int CrateEu2::getTestData(INT module, DWORD *buf, DWORD *buf_tmark, DWORD len,
 	 << buf_tmark[0] << ":" << buf[0] << dec << endl;*/
 	return len;
 }
+} // namespace test_ltrapi

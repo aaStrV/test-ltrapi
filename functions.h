@@ -4,9 +4,10 @@
 #include <iostream>
 #include <ltr24api.h>
 #include <stdio.h>
-using namespace std;
 
+namespace test_ltrapi {
 int getargs(int argc, char **argv, const char *&ip, WORD &port);
 int getIp(const char *s);
+} // namespace test_ltrapi
 
 #endif /* FUNCTIONS_H_ */

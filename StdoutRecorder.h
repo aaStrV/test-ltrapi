@@ -4,6 +4,7 @@
 #include <iostream>
 #include "IRecord.h"
 
+namespace test_ltrapi {
 class StdoutRecorder: public IRecord {
 	int id;
 public:
@@ -14,5 +15,6 @@ public:
 	~StdoutRecorder(void) {
 	}
 };
+} // namespace test_ltrapi
 
 #endif /* STDOUTRECORDER_H_ */
