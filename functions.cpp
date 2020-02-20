@@ -42,6 +42,5 @@ int getIp(const char *s) {
 	int ip;
 	sscanf(s, "%d.%d.%d.%d", &a[0], &a[1], &a[2], &a[3]);
 	ip = (a[0] << 24) | (a[1] << 16) | (a[2] << 8) | a[3];
-	cout << "IP: " << hex << ip << dec << endl;
 	return ip;
 }

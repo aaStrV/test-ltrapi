@@ -1,17 +1,11 @@
 #include "CrateReader.h"
 
 int CrateReader::readModule(INT module, DWORD _len) {
-	set<IRecord*>::iterator rec_it;
+	DWORD len = _len <= MAX_BUF ? _len : MAX_BUF;
 	int err = 0;
 	int receaved = 0;
-	DWORD len = _len <= MAX_BUF ? _len : MAX_BUF;
 
-//	if (!crate->isReady()) {
-//		cerr << "CrateReader::readModule(), crate is not ready" << endl;
-//		return -1;
-//	}
 	err = receaved = crate->getData(module, buf, buf_tmark, len, timeout);
-//	err = receaved = crate->getData(module, buf, buf_tmark, len, timeout);
 	if (err < 0) {
 		cerr << "CrateReader::readModule(), crate->getData: error " << err
 				<< endl;
@@ -19,6 +13,8 @@ int CrateReader::readModule(INT module, DWORD _len) {
 	} else {
 		cout << "Read done " << endl;
 	}
+
+	set<IRecord*>::iterator rec_it;
 	for (rec_it = clients.begin(); rec_it != clients.end(); rec_it++) {
 		(*rec_it)->record(buf, buf_tmark, receaved);
 	}
