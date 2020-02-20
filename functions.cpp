@@ -1,4 +1,7 @@
 #include "functions.h"
+#ifdef _WIN32
+#define sscanf sscanf_s
+#endif
 using namespace std;
 
 namespace test_ltrapi {

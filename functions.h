@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <ltr24api.h>
-#include <stdio.h>
 
 namespace test_ltrapi {
 int getargs(int argc, char **argv, const char *&ip, WORD &port);
