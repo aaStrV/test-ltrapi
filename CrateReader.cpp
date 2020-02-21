@@ -3,7 +3,7 @@ using namespace std;
 
 namespace test_ltrapi {
 int CrateReader::readModule(INT module, DWORD _len) {
-	DWORD len = _len <= MAX_BUF ? _len : MAX_BUF;
+	DWORD len = _len <= kMaxBuf ? _len : kMaxBuf;
 	int err = 0;
 	int receaved = 0;
 
@@ -28,7 +28,7 @@ int CrateReader::readTestModule(DWORD module, DWORD _len) {
 	set<IRecord*>::iterator rec_it;
 	int err = 0;
 	int receaved = 0;
-	DWORD len = _len <= MAX_BUF ? _len : MAX_BUF;
+	DWORD len = _len <= kMaxBuf ? _len : kMaxBuf;
 
 	err = receaved = crate->getTestData(module, buf, buf_tmark, len, timeout);
 	if (err < 0) {

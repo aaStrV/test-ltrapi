@@ -15,8 +15,8 @@ namespace test_ltrapi {
  */
 class CrateReader {
 private:
-	DWORD buf[MAX_BUF];
-	DWORD buf_tmark[MAX_BUF];
+	DWORD buf[kMaxBuf];
+	DWORD buf_tmark[kMaxBuf];
 	std::set<IRecord*> clients;
 	CrateEu2 *crate;
 	DWORD timeout;

@@ -37,8 +37,8 @@ int main(int argc, char **argv) {
 	// @formatter:off
 	// Обработка аргументов
 	// Формат ввода: <progname> [ip [port]]
-	const char *ip = IP_LTRD;
-	WORD port = PORT_LTRD;
+	const char *ip = kIpLtdr;
+	WORD port = kPortLtrd;
 	if (!(getargs(argc, argv, ip, port) == 0))
 		return -1;
 
