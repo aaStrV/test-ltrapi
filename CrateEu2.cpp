@@ -61,7 +61,7 @@ int CrateEu2::getData(INT module, DWORD *buf, DWORD *buf_tmark, DWORD len,
 	}
 
 	// 2)
-	err = LTR24_Open(&tltr_module, ltrd_addr_dword, ltrd_port, csn, module);
+	err = LTR24_Open(&tltr_module, ltrd_addr_dword, ltrd_port, p_csn, module);
 	if (err < 0) {
 		cerr << "CrateEU2::getData(), LTR24_Open: error " << err << endl;
 		return err;

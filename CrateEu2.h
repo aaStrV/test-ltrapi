@@ -29,7 +29,7 @@ private:
 	DWORD ltrd_addr_dword;
 	WORD ltrd_port;
 	const char *p_csn;
-	char csn[16];
+//	char csn[16];
 	WORD modules[LTR_MODULES_PER_CRATE_MAX];
 public:
 	CrateEu2(const char *crate_sn, const char *ltrd_addr_str, WORD ltrd_port);
