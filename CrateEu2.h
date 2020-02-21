@@ -2,7 +2,6 @@
 #define CRATEEU2_H_
 
 #include <iostream>
-#include <string.h>
 #include <ltr24api.h>
 #include "functions.h"
 
