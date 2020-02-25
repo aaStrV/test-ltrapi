@@ -25,7 +25,6 @@
 #include <iostream>
 #include <ltr24api.h>
 #include "defines.h"
-#include "defines.h"
 #include "CrateEu2.h"
 #include "StdoutRecorder.h"
 #include "StdoutChannelRecorder.h"
